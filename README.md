@@ -4,7 +4,6 @@
 
 _*Grafico que muestra como funciona una dependencia*_
 
-<div align="center">
 ```mermaid
 classDiagram
 
