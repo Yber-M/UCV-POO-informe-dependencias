@@ -4,7 +4,7 @@
 
 _*Grafico que muestra como funciona una dependencia*_
 
-<center>
+<div align="center">
 ```mermaid
 classDiagram
 
@@ -33,8 +33,6 @@ class C{
 B --|> A
 C --|> A
 ```
-<center>
-
 
 ```
 Como podemos ver en el grafico, las clases 'B' y 'C' dependen de 'A', asi que
