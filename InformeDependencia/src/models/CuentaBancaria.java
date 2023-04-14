@@ -5,7 +5,7 @@ import lombok.Setter;
 public class CuentaBancaria {
   @Getter
   @Setter
-  private int numeroCuenta;
+  private String numeroCuenta;
   private double saldo;
 
   /*

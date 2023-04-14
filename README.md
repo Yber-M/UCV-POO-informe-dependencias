@@ -4,7 +4,6 @@
 
 _*Grafico que muestra como funciona una dependencia*_
 
-<div align="center">
 ```mermaid
 classDiagram
 
@@ -21,7 +20,6 @@ class A {
 class B {
   +atributo1
   +atributo2
-
   +metodo1()
 }
 
@@ -30,8 +28,8 @@ class C{
   +metodo1()
 }
 
-B --|> A
-C --|> A
+A --|> B
+A --|> C
 ```
 
 ```
@@ -44,83 +42,110 @@ Veamos un ejemplo de como funcionan las dependencias
 ```mermaid
 classDiagram
 
+class Client{
+  id: int 
+  name: String 
+  username: String 
+  email: String 
+  address: Address 
+  phone: String 
+  website: String 
+  company: Company 
 
-class Cliente {
-  -nombre: String;
-  -direccion: String;
-  -telefono: String;
-  +metodos()
+  getName(): String
+  setName(String value): void
+
+  getUsername(): String
+  setUsername(String value): void
+
+  getEmail(): String
+  setEmail(String value): void
+
+  getAddress(): Address
+  setAddress(Address value): Address
+
+  getPhone(): String
+  setPhone(String value): void
+
+  getWebsite(): String
+  setWebsite(String value): void
+
+  getCompany(): Company
+  setCompany(Company value): void
+
+  Client(): Constructor
 }
 
-class CuentaBancaria{
-  -numeroCuenta: int
-  -saldo: double
-  -cliente: Cliente
+class Address {
+  street: String
+  suit: String
+  city: String
+  zipcode: String
+  geo: Geo
 
-  +obtenerNombreTitular();
+  getStreet(): String
+  setStreet(String value): void
+
+  getSuite(): String
+  setSuite(String value): void
+
+  getCity(): String
+  setCity(String value): void
+
+  getZipcode(): String
+  setZipcode(String value): void
+
+  getGeo(): Geo
+  setGeo(Geo value): void
 }
 
-CuentaBancaria --|> Cliente
-```
+class Geo {
+  lat: String
+  lng: String
 
-```
-En el grafico anterior se crea dos clases, una llamada CuentaBancaria y la otra llamada
-Cliente, donde la clase CuentaBancaria depende de Cliente, esto es porque una cuenta
-bancaria debe de tener la informacion de un cliente para poder ser creada
-```
+  getLat(): String
+  setLat(String value): void
 
-_*El codigo de lo anterior se veria asi*_
-
-```java
-public class CuentaBancaria{
-  private int numeroCuenta;
-  private double saldo;
-  private Cliente titular; /* Aca hacemos uso de la clase 'Cliente' ahora
-  entendemos que nuestra clase 'CuentaBancaria' depende de un 'Cliente' */
-
-  // Metodos para hacer las operaciones de la tarjeta
-  public void depositar(double cantidad){
-    saldo += cantidad;
-  }
-  public void retirar(double cantidad){
-    saldo -=cantidad;
-  }
-
-  public String obtenerNombreTitular(){
-    return titular.getNombre();
-  }
+  getLng(): String
+  setLng(String value): void
 }
 
-public class Cliente {
-  // Atributos de la clase
-  private String nombre;
-  private String direccion;
-  private String telefono;
+class Company {
+  name: String
+  catchPhrase: String
+  bs: String
 
-  // Metodos Getters de la clase
-  public String getNombre(){
-    return nombre;
-  }
-  public String direccion(){
-    return direccion;
-  }
-  public String telefono(){
-    return telefono;
-  }
+  getName(): String
+  setName(String value): void
 
-  // Metodos Setters de la clase
-  public void setNombre(String nuevoNombre){
-    nombre = nuevoNombre;
-  }
-  public void setDireccion(String nuevaDireccion){
-    direccion = nuevaDireccion;
-  }
-  public void setTelefono(String nuevoTelefono){
-    telefono = nuevoTelefono;
-  }
+  getCatchPhrase(): String
+  setCatchPhrase(String value): String
+
+  getBs(): String
+  setBs(String value): void
 }
+
+class CuentaBancaria {
+  numeroCuenta: String  
+  saldo: double
+  titular: Client
+
+  depositar(int cantidad): void
+  retirar(int cantidad): void
+  obtenerNombreTitular(): String
+}
+
+Client --|> Address
+Address --|> Geo
+Client --|> Company
+CuentaBancaria --|> Client
 ```
 
 ```
-En el código anterior se visualiza en el lenguaje de JAVA
+En el grafico mostrado anteriormente, podemos observar como estan constituidas las clases,
+vemos que en la clase 'Client' depende de dos clases, llamadas 'Address' y 'Company',
+entonces si modificamos alguna de estas dos clases, la clase 'Client' tambien se mirara 
+afectada, por otro lado la clase 'Address' depende de otra clase, llamada 'Geo', la cual es 
+una clase independiente ya que no necesita de otra clase creada por nosotros, ya que 
+cualquier clase que creamos es dependiente de la super clase llamada 'Object'
 ```
