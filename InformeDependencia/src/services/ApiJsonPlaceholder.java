@@ -26,7 +26,7 @@ public class ApiJsonPlaceholder {
    * servira para poder tener mayor seguimiento a la respuesta que pueda entregar
    * la api con los datos
    */
-  public ApiResponse getUsers() {
+  public ApiResponse getClients() {
     ApiResponse apiResponse = new ApiResponse();
     try {
       URL url = new URL(API_URL);
