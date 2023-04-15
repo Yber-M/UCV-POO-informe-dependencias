@@ -61,17 +61,20 @@ class CuentaBancaria{
 
 CuentaBancaria --|> Cliente
 ```
+
 ```
-En el grafico anterior se crea dos clases, una llamada CuentaBancaria y la otra llamada 
+En el grafico anterior se crea dos clases, una llamada CuentaBancaria y la otra llamada
 Cliente, donde la clase CuentaBancaria depende de Cliente, esto es porque una cuenta
 bancaria debe de tener la informacion de un cliente para poder ser creada
 ```
+
 _*El codigo de lo anterior se veria asi*_
+
 ```java
 public class CuentaBancaria{
   private int numeroCuenta;
   private double saldo;
-  private Cliente titular; /* Aca hacemos uso de la clase 'Cliente' ahora 
+  private Cliente titular; /* Aca hacemos uso de la clase 'Cliente' ahora
   entendemos que nuestra clase 'CuentaBancaria' depende de un 'Cliente' */
 
   // Metodos para hacer las operaciones de la tarjeta
@@ -103,7 +106,7 @@ public class Cliente {
   public String telefono(){
     return telefono;
   }
-  
+
   // Metodos Setters de la clase
   public void setNombre(String nuevoNombre){
     nombre = nuevoNombre;
@@ -117,4 +120,4 @@ public class Cliente {
 }
 ```
 
-
+HOLAAAA YA FUNCIONOOOOOOOOOOOOOOOOO!!!!
